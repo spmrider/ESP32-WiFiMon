@@ -7,8 +7,8 @@ void MQTT_connect();
 String translateEncryptionType(wifi_auth_mode_t encryptionType);
 void v_scantask( void *pvParameters ) {
 String topic = MQTT_TOPIC;
-topic += "/";
-topic += ETH.macAddress();
+// topic += "/";
+String sensor = ETH.macAddress();
   Adafruit_MQTT_Publish mqttPublish = Adafruit_MQTT_Publish(&mqtt, topic.c_str());
   for(;;) {
     MQTT_connect();
@@ -22,6 +22,9 @@ topic += ETH.macAddress();
       int rssi = WiFi.RSSI(index);
       String encryption = translateEncryptionType(WiFi.encryptionType(index));
       String message = "{";
+      message += "\"sensor\":\"";
+      message += sensor;
+      message += "\",\n";
       message += "\"ssid\":\"";
       message += ssid;
       message += "\",\n";
