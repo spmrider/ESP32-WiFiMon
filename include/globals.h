@@ -8,6 +8,8 @@ extern String siteversion;
 extern String yourfootnote;
 
 extern ESP32WebServer server;
+extern WiFiClient mqtt_c;
+extern Adafruit_MQTT_Client mqtt;
 
 extern bool eth_connected;
 

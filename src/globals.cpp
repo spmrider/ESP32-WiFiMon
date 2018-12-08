@@ -12,3 +12,6 @@ String siteversion    = "v1.0";  // Version of your Website
 bool eth_connected = false; // Ethernet connectivity status
 
 ESP32WebServer server(80);
+
+WiFiClient mqtt_c;
+Adafruit_MQTT_Client mqtt(&mqtt_c, MQTT_SERVER, MQTT_PORT, MQTT_USER, MQTT_PASS);

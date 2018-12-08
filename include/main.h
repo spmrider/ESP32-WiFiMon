@@ -33,7 +33,7 @@
 #define sitewidth  1024  // Adjust site page width in pixels as required
 
 // Scan wait time (seconds)
-define APSCAN_FREQ 5
+#define APSCAN_FREQ 5
 
 #ifndef _GLOBALS_CPP
 #include "globals.h"

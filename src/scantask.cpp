@@ -5,11 +5,24 @@
 
 #include "main.h"
 
+void MQTT_connect();
+
 void v_scantask( void *pvParameters ) {
-  // scan aps
+  int n = 0;
 
-  // publish values
+  for(;;) {
+    // scan aps
+    n = WiFi.scanNetworks(false, true);
 
-  // wait predefined ime before next scan
-  vTaskDelay(APSCAN_FREQ * 1000);
+    // publish values
+    MQTT_connect();
+    if(n != 0) {
+      for(int i = 0; i < n; ++i) {
+
+      }
+    // wait predefined ime before next scan
+    vTaskDelay(APSCAN_FREQ * 1000);
+    }
+  }
+  vTaskDelete(NULL);
 }
