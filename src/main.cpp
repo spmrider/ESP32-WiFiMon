@@ -48,7 +48,23 @@ void setup() {
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
 
-  delay(100);
+  Serial.print("Waiting for successful ETH connect ");
+  while( !eth_connected ) {
+    Serial.write('.');
+    delay(500);
+  }
+  Serial.println("");
+
+  Serial.print("ETH MAC: ");
+  Serial.print(ETH.macAddress());
+  Serial.print(", IPv4: ");
+  Serial.print(ETH.localIP());
+  if (ETH.fullDuplex()) {
+    Serial.print(", FULL_DUPLEX");
+  }
+  Serial.print(", ");
+  Serial.print(ETH.linkSpeed());
+  Serial.println("Mbps");
 
   Serial.println("Setting time...");
   StartTime();

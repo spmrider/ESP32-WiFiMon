@@ -9,4 +9,6 @@ extern String yourfootnote;
 
 extern ESP32WebServer server;
 
+extern bool eth_connected;
+
 #endif
