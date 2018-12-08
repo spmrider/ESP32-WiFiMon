@@ -26,7 +26,14 @@
 #include <ESP32WebServer.h>
 #include <ESPmDNS.h>
 
+// Adafruit MQTT Library
+#include <Adafruit_MQTT.h>
+#include <Adafruit_MQTT_Client.h>
+
 #define sitewidth  1024  // Adjust site page width in pixels as required
+
+// Scan wait time (seconds)
+define APSCAN_FREQ 5
 
 #ifndef _GLOBALS_CPP
 #include "globals.h"
