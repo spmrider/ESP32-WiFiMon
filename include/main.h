@@ -6,6 +6,9 @@
 #include <WiFi.h>
 #include <time.h>
 
+// to be tuned
+#define STACK_SIZE 1024
+
 // Time Servers
 #define NTP1 "0.de.pool.ntp.org"
 #define NTP2 "1.de.pool.ntp.org"
