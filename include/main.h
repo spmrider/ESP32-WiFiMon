@@ -7,7 +7,7 @@
 #include <time.h>
 
 // to be tuned
-#define STACK_SIZE 1024
+#define STACK_SIZE 4096
 
 // Time Servers
 #define NTP1 "0.de.pool.ntp.org"
