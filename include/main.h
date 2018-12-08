@@ -6,6 +6,8 @@
 #include <WiFi.h>
 #include <time.h>
 
+#include "mqttconf.h"
+
 // to be tuned
 #define STACK_SIZE 4096
 

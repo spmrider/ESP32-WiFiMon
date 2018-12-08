@@ -1,0 +1,9 @@
+#ifndef MQTTCONF_H
+#define MQTTCONF_H
+
+// define access values for the MQTT service
+#define MQTT_SERVER "192.168.1.1"   // Your MQTT server
+#define MQTT_TOPIC  "apscan"        // The topic for publishing
+#define MQTT_USER   "sensor"        // Your MQTT publishing user
+#define MQTT_PASS   "sensor"        // Your MQTT password
+#endif
