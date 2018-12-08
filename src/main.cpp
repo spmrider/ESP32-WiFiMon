@@ -8,6 +8,7 @@ void homepage();
 void wifiaplist();
 void handleNotFound();
 void v_wstask(void *pvParameters);
+void v_scantask(void *pvParameters);
 void StartTime();
 
 // create some tasks for handling different jobs
@@ -29,6 +30,19 @@ void starttasks() {
     Serial.println("... Webserver FAILED!");
   }
 
+  /* Scan and publish task */
+  xReturned = xTaskCreate(
+                    v_scantask,       /* Function that implements the task. */
+                    "ap_scan_and_pub",          /* Text name for the task. */
+                    STACK_SIZE,      /* Stack size in words, not bytes. */
+                    ( void * ) 1,    /* Parameter passed into the task. */
+                    tskIDLE_PRIORITY,/* Priority at which the task is created. */
+                    &xHandle );      /* Used to pass out the created task's handle. */
+  if( xReturned == pdPASS ) {
+    Serial.println("... ap_scan_and_pub");
+  } else {
+    Serial.println("... ap_scan_and_pub FAILED!");
+  }
 }
 
 // setup basic things
