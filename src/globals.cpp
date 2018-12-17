@@ -13,5 +13,10 @@ bool eth_connected = false; // Ethernet connectivity status
 
 ESP32WebServer server(80);
 
+#ifdef MQTT_SSL
+WiFiClientSecure mqtt_c;
+#else
 WiFiClient mqtt_c;
+#endif
+
 Adafruit_MQTT_Client mqtt(&mqtt_c, MQTT_SERVER, MQTT_PORT, MQTT_USER, MQTT_PASS);

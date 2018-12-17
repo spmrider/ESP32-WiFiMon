@@ -7,4 +7,5 @@
 #define MQTT_TOPIC  "apscan"        // The topic for publishing
 #define MQTT_USER   "sensor"        // Your MQTT publishing user
 #define MQTT_PASS   "sensor"        // Your MQTT password
+#define MQTT_SSL    1               // comment out for plaintext MQTT
 #endif

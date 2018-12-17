@@ -82,6 +82,9 @@ void setup() {
 
   Serial.println("Setting time...");
   StartTime();
+
+  delay(1000);
+
   Serial.println("Starting tasks ...");
   starttasks();
   Serial.println("WiFi Mon init done...");

@@ -22,7 +22,7 @@
 #include "ETH.h"
 
 // Web Server
-#include <WiFiClient.h>
+#include <WiFiClientSecure.h>
 #include <ESP32WebServer.h>
 #include <ESPmDNS.h>
 
