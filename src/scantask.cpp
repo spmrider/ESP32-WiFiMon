@@ -14,12 +14,14 @@ String sensor = ETH.macAddress();
     MQTT_connect();
     // scan aps
     int count = WiFi.scanNetworks(false, true);
+    int chanmap[15] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     for(int index = 0; index < count; index++)
     {
       String ssid = (WiFi.SSID(index).length() == 0?"(Hidden SSID)":WiFi.SSID(index));
       String bssid = WiFi.BSSIDstr(index);
       int channel = WiFi.channel(index);
       int rssi = WiFi.RSSI(index);
+      chanmap[channel]++;
       String encryption = translateEncryptionType(WiFi.encryptionType(index));
       String message = "{";
       message += "\"sensor\":\"";
@@ -43,6 +45,9 @@ String sensor = ETH.macAddress();
       // publish values
       mqttPublish.publish(message.c_str());
       // Serial.println(message);
+    }
+    for(int chan=1; chan < 15; chan++){
+      printf("Channel %2i: %3i\n", chan, chanmap[chan]);
     }
     // wait predefined ime before next scan
     vTaskDelay(APSCAN_FREQ * 1000);
