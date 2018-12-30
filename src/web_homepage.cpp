@@ -1,5 +1,6 @@
 #include "main.h"
 
+#if(WEBSERVER)
 // external
 void append_HTML_header();
 void append_HTML_footer();
@@ -20,3 +21,4 @@ void homepage()
   append_HTML_footer();
   server.send(200, "text/html", webpage);
 }
+#endif

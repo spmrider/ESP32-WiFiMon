@@ -1,13 +1,15 @@
 #include "main.h"
 
 // external functions
-void scanWifiAps();
 void EthEvent(WiFiEvent_t event);
 
+#if(WEBSERVER)
 void homepage();
 void wifiaplist();
 void handleNotFound();
 void v_wstask(void *pvParameters);
+#endif
+
 void v_scantask(void *pvParameters);
 void StartTime();
 
@@ -16,6 +18,7 @@ void starttasks() {
   BaseType_t xReturned;
   TaskHandle_t xHandle = NULL;
 
+#if(WEBSERVER)
   /* Webserver Task */
   xReturned = xTaskCreate(
                     v_wstask,       /* Function that implements the task. */
@@ -29,6 +32,7 @@ void starttasks() {
   } else {
     Serial.println("... Webserver FAILED!");
   }
+#endif
 
   /* Scan and publish task */
   xReturned = xTaskCreate(
@@ -53,10 +57,12 @@ void setup() {
   WiFi.onEvent(EthEvent);
   ETH.begin();
 
+#if(WEBSERVER)
   // Prepare ESP32WebServer
   server.on("/", homepage);
   server.on("/aps", wifiaplist);
   server.onNotFound(handleNotFound);
+#endif
 
   // Setup WiFi for scanning
   WiFi.mode(WIFI_STA);

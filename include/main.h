@@ -8,6 +8,9 @@
 
 #include "mqttconf.h"
 
+// Enable/Disable Webservice
+#define WEBSERVER true
+
 // to be tuned
 #define STACK_SIZE 4096
 
@@ -22,8 +25,12 @@
 #include "ETH.h"
 
 // Web Server
-#include <WiFiClientSecure.h>
+#if(WEBSERVER)
 #include <ESP32WebServer.h>
+#endif
+
+// General Clients
+#include <WiFiClientSecure.h>
 #include <ESPmDNS.h>
 
 // Adafruit MQTT Library

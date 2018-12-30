@@ -1,5 +1,6 @@
 #include "main.h"
 
+#if(WEBSERVER)
 void append_HTML_header()
 {
   webpage  = "";
@@ -55,3 +56,4 @@ void append_HTML_footer()
   webpage += "</p></footer>";
   webpage += "</div></body></html>";
 }
+#endif
