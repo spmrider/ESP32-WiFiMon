@@ -11,9 +11,14 @@ extern String yourfootnote;
 extern ESP32WebServer server;
 #endif
 
-extern WiFiClient mqtt_c;
 extern Adafruit_MQTT_Client mqtt;
 
 extern bool eth_connected;
+
+#ifdef MQTT_SSL
+extern WiFiClientSecure mqtt_c;
+#else
+extern WiFiClient mqtt_c;
+#endif
 
 #endif

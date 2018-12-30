@@ -4,8 +4,15 @@
 void MQTT_connect() {
   int8_t ret;
 
+  if(!mqtt_c.connected()) {
+    Serial.println("TCP Connect broken!");
+  }
+
   // Stop if already connected.
   if (mqtt.connected()) {
+    Serial.println("-> MQTT already connected...");
+    Serial.print("Free HEAP: ");
+    Serial.println(ESP.getFreeHeap());
     return;
   }
 

@@ -9,10 +9,10 @@
 #include "mqttconf.h"
 
 // Enable/Disable Webservice
-#define WEBSERVER true
+#define WEBSERVER false
 
 // to be tuned
-#define STACK_SIZE 4096
+#define STACK_SIZE 8192
 
 // Time Servers
 #define NTP1 "0.de.pool.ntp.org"
@@ -27,6 +27,7 @@
 // Web Server
 #if(WEBSERVER)
 #include <ESP32WebServer.h>
+#define sitewidth  1024  // Adjust site page width in pixels as required
 #endif
 
 // General Clients
@@ -37,10 +38,8 @@
 #include <Adafruit_MQTT.h>
 #include <Adafruit_MQTT_Client.h>
 
-#define sitewidth  1024  // Adjust site page width in pixels as required
-
 // Scan wait time (seconds)
-#define APSCAN_FREQ 5
+#define APSCAN_FREQ 2
 
 #ifndef _GLOBALS_CPP
 #include "globals.h"
